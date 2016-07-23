@@ -1,0 +1,126 @@
+<ion-navbar  *navbar hideBackButton hideTabBar>
+  <ion-buttons left class="leftNavButton">
+    <div block button nav-pop>
+      <ion-icon name="ios-arrow-back"></ion-icon>
+
+    </div>
+  </ion-buttons>
+
+  <ion-title>ShopDetail Page</ion-title>
+
+</ion-navbar>
+
+
+<ion-content  #popoverContent class="shopDetail">
+
+  <ion-card class="adv-map">
+    <img src="img/54.jpg"/>
+    <button fab class="fab-favorite">
+      <ion-icon name='md-heart-outline'></ion-icon>
+    </button>
+    <ion-card-content>
+      <ion-card-title>
+        Nine Inch Nails Live
+      </ion-card-title>
+      <p>
+        The most popular industrial group ever, and largely
+        responsible for bringing the music to a mass audience.
+      </p>
+    </ion-card-content>
+
+    <ion-row no-padding>
+      <ion-col>
+        <button clear small danger>
+          <ion-icon name='ion-chatbox'></ion-icon>
+          Comment
+        </button>
+      </ion-col>
+      <ion-col text-center>
+        <button clear small danger>
+          <ion-icon name='musical-notes'></ion-icon>
+          Listen
+        </button>
+      </ion-col>
+      <ion-col text-right>
+        <button clear small danger>
+          <ion-icon name='share-alt'></ion-icon>
+          Share
+        </button>
+      </ion-col>
+    </ion-row>
+
+  </ion-card>
+
+
+
+
+
+  <ion-toolbar>
+    <div  class="buttonInMenu">
+      <button clear (click)="presentShopDetailPop1Popover($event)">
+        shoPop1
+        <ion-icon name="ios-arrow-down-outline"></ion-icon>
+      </button>
+    </div>
+    <div class="buttonInMenu">
+      <button clear (click)="presentShopDetailPop2Popover($event)">
+        shoPop2
+        <ion-icon name="ios-arrow-down-outline"></ion-icon>
+      </button>
+    </div>
+
+    <div class="buttonInMenu">
+      <button clear (click)="presentShopDetailPop3Popover($event)">
+        shoPop3
+        <ion-icon name="ios-arrow-down-outline"></ion-icon>
+      </button>
+    </div>
+  </ion-toolbar>
+
+
+  <div >
+    <ion-list class="ion-list-class" *ngFor="let product of shopDetail">
+
+      <ion-card class="adv-map" >
+        <div style="position: relative">
+
+          <ion-slides>
+            <ion-slide>
+              <a (click)="openProductDetailsPage(product)">
+                <img src="img/card-saopaolo.png" >
+              </a>
+              <button fab class="fab-favorite">
+                <ion-icon name='md-heart-outline'></ion-icon>
+              </button>
+            </ion-slide>
+
+            <ion-slide>
+              <a (click)="openProductDetailsPage(product)">
+                <img src="img/card-saopaolo.png" >
+              </a>
+              <button fab class="fab-favorite">
+                <ion-icon name='md-heart-outline'></ion-icon>
+              </button>
+            </ion-slide>
+          </ion-slides>
+
+        </div>
+
+        <ion-item>
+          <ion-icon subtle large item-left name='cloud'></ion-icon>
+          <h2>Yoshi's Island</h2>
+          <p>Iggy Koopa</p>
+          <button danger clear item-right>
+            <ion-icon name='navigate'></ion-icon>
+            Start
+          </button>
+        </ion-item>
+      </ion-card>
+
+    </ion-list>
+  </div>
+
+  <div #popoverText class="text-to-change">
+    <div> testData</div>
+  </div>
+</ion-content>

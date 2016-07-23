@@ -1,0 +1,59 @@
+.productListsToolbar{
+
+  z-index: 1;
+
+  .buttonInMenu{
+    display: table-cell;
+    margin: 0!important;
+    padding: 0!important;
+    width: 33.34vw;
+    text-align:center;
+  }
+}
+
+.leftNavButton{
+  width: 10vw;
+  text-align:center;
+}
+
+.productLists{
+
+  ion-avatar img {
+    max-width: 2.6em;
+    max-height: 2.6em;
+    border-radius: 1.3em;
+  }
+
+  ion-card.adv-map {
+    width: 100%;
+    margin: 0;
+  }
+
+  .fab-shop {
+    position: relative;
+    top: -1.3em;
+    right: 1.0em;
+    z-index: 50;
+    float: right;
+    overflow:visible;
+    background-color: transparent;
+  }
+
+  .fab-favorite {
+    position: absolute;
+    background-color: transparent;
+    top:0.3em;
+    right:0.6em;
+    font-size: 1.8em;
+    color: white;
+    z-index: 50;
+  }
+
+  .productIntroduction{
+    top:-2.6em;
+  }
+  .ion-list-class{
+    margin: 0;
+  }
+
+}

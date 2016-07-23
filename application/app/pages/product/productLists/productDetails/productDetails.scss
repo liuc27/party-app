@@ -1,0 +1,58 @@
+.productDetails{
+
+  z-index: 1;
+
+  .button-icon-only ion-icon{
+    font-size: 2.2em;
+  }
+
+  ion-avatar img {
+    max-width: 3.2em;
+    max-height: 3.2em;
+    border-radius: 1.6em;
+  }
+
+  ion-card.adv-map {
+    width: 100%;
+    margin: 0;
+  }
+
+  .fab-shop {
+    position: absolute;
+    bottom: -3.8em;
+    right:1.0em;
+    z-index: 50;
+    float: right;
+    overflow:hidden;
+    background-color: transparent;
+  }
+
+  button[fab].fab-favorite {
+    background-color: transparent;
+    top:0.6em;
+    right:1.0em;
+    padding: 0;
+    margin: 0;
+    height:3.2em;
+    width:3.2em;
+  }
+
+  ion-content.cards-bg {
+  }
+
+  .ion-list-class{
+    margin: 0;
+  }
+
+  .highLightsCard{
+    width: 100%;
+    margin:0;
+  }
+
+  .spaceLine{
+    height: 5vw;
+    background-color: #fff3f3;
+    width: 100vw;
+  }
+
+}

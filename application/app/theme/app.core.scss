@@ -1,0 +1,38 @@
+// http://ionicframework.com/docs/v2/theming/
+
+
+// App Shared Imports
+// --------------------------------------------------
+// These are the imports which make up the design of this app.
+// By default each design mode includes these shared imports.
+// App Shared Sass variables belong in app.variables.scss.
+
+@import "./app";
+
+@import "../pages/shop/shop";
+
+@import "../pages/settings/settings";
+
+@import "../pages/product/product";
+
+@import "../pages/product/productLists/productLists";
+
+@import "../pages/product/productLists/productDetails/productDetails";
+
+@import "../pages/shop/shopDetail/shopDetail";
+
+@import "../pages/product/productLists/popoverPages/productListsPop1";
+@import "../pages/product/productLists/popoverPages/productListsPop2";
+@import "../pages/product/productLists/popoverPages/productListsPop3";
+
+@import "../pages/product/productLists/productDetails/popoverPages/productDetailsPop1";
+@import "../pages/product/productLists/productDetails/popoverPages/productDetailsPop2";
+@import "../pages/product/productLists/productDetails/popoverPages/productDetailsPop3";
+
+@import "../pages/shop/popoverPages/shopPop1";
+@import "../pages/shop/popoverPages/shopPop2";
+@import "../pages/shop/popoverPages/shopPop3";
+
+@import "../pages/shop/shopDetail/popoverPages/shopDetailPop1";
+@import "../pages/shop/shopDetail/popoverPages/shopDetailPop2";
+@import "../pages/shop/shopDetail/popoverPages/shopDetailPop3";
