@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
-import {Platform, Events, ActionSheet, NavController,NavParams} from 'ionic-angular';
+import {Platform, Events, ActionSheetController, NavController,NavParams} from 'ionic-angular';
 import {ProductService} from '../../providers/product-getAllProducts-service/product-getAllProducts-service';
 import {ProductLists} from './productLists/productLists';
-
+import {ProductDetails} from './productLists/productDetails/productDetails';
+import {ShopDetails} from '../shop/shopDetails/shopDetails';
 
 @Component({
   templateUrl: 'build/pages/product/product.html',
@@ -13,68 +14,72 @@ export class ProductPage {
   public product:any;
   private menu1:any;
   private menu2:any;
-
+  private shop;
+  point;
 
   constructor(private nav:NavController,
+              private actionSheet:ActionSheetController,
               private params:NavParams,
               public productService:ProductService,
               private events:Events,
               public platform:Platform) {
     this.product=params.data.product;
     this.loadProducts();
+    this.actionSheet=actionSheet;
+
     this.menu1=[{
       id: 0,
-      name: 'Dine',
+      name: 'cute',
       icon: 'ios-wine',
       color: 'red',
       type: 'food'
     }, {
       id: 1,
-      name: 'Fashion',
+      name: 'beautiful',
       icon: 'ios-basket',
       color: '#5383FF',
       type: 'shopping'
 
     }, {
       id: 2,
-      name: 'Beauty',
+      name: 'sexy',
       icon: 'ios-color-wand',
       color: 'pink',
       type: 'beauty'
     }, {
       id: 3,
-      name: 'Sleep',
+      name: 'elegant',
       icon: 'ios-moon',
       color: '#5383FF',
       type: 'hotel'
     }, {
       id: 4,
-      name: 'Movie',
+      name: 'season',
       icon: 'ios-film',
       color: 'silver',
       type: 'movie'
     }];
     this.menu2=[{
       id: 5,
-      name: 'Car',
+      name: 'date',
       icon: 'ios-car',
       color: 'gold',
       type: 'car'
     }, {
       id: 6,
-      name: 'Cafe',
+      name: 'work',
       icon: 'ios-cafe',
       color: 'lightgreen',
       type: 'job'
     }, {
       id: 7,
-      name: 'KaraOK',
+      name: 'party',
       icon: 'ios-musical-notes',
       color: 'lightgreen',
       type: 'job'
     }, {
       id: 8,
-      name: 'Hospital',
+      name: 'wedding',
       icon: 'md-add',
       color: 'lightgreen',
       type: 'job'
@@ -99,7 +104,7 @@ export class ProductPage {
   }
 
   openMenu() {
-    let actionSheet = ActionSheet.create({
+    let actionSheet = this.actionSheet.create({
       title: 'Albums',
       cssClass: 'action-sheets-basic-page',
       buttons: [
@@ -142,12 +147,23 @@ export class ProductPage {
       ]
     });
 
-    this.nav.present(actionSheet);
+    actionSheet.present();
 
   }
 
   openProductListsPage(product){
     this.nav.push(ProductLists,{product:product});
+  }
+
+  openProductDetailsPage(product){
+    console.log("detail open");
+    console.log("product");
+    this.nav.push(ProductDetails,{product:product});
+  }
+
+  openShopDetailsPage(shop){
+      console.log("shop");
+      this.nav.push(ShopDetails,{shop:shop});
   }
 
 }

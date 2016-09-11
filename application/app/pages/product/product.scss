@@ -48,4 +48,60 @@
     -webkit-flex-wrap: wrap;
     flex-wrap: wrap;
   }
+
+  ion-card.adv-map {
+    width: 100%;
+    margin: 0;
+  }
+
+  ion-avatar img {
+    max-width: 2.6em;
+    max-height: 2.6em;
+    border-radius: 1.3em;
+  }
+
+  .bigImage {
+    height: 56.25vw;
+    width: 100vw;
+  }
+
+  .fab-shop {
+    position: relative;
+    top: -1.3em;
+    right: 1.0em;
+    z-index: 50;
+    float: right;
+    overflow:visible;
+    background-color: transparent;
+  }
+
+  .fab-favorite {
+    position: absolute;
+    background-color: transparent;
+    top:0.3em;
+    right:0.6em;
+    font-size: 2.8rem;
+    color: white;
+    z-index: 50;
+  }
+
+  .fab-time {
+    position: absolute;
+    background-color: transparent;
+    bottom: 2.6em;
+    left:0.3em;
+    font-size: 1.8rem;
+    text-align: center;
+    color: white;
+    z-index: 50;
+  }
+
+  ion-list{
+    margin: 0;
+  }
+
+  .productIntroduction{
+    top:-2.6em;
+    margin-bottom:-2.7em;
+  }
 }

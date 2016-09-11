@@ -2,13 +2,12 @@
  * Created by liuchao on 6/25/16.
  */
 import {Component, ViewChild, ElementRef} from '@angular/core';
-import {Page,App, Events, NavController, NavParams, Popover} from 'ionic-angular';
+import {Page,App, Events, NavController, NavParams, PopoverController} from 'ionic-angular';
 import {ProductListsPop1} from "./popoverPages/productListsPop1";
 import {ProductListsPop2} from "./popoverPages/productListsPop2";
 import {ProductListsPop3} from "./popoverPages/productListsPop3";
 import {ProductDetails} from './productDetails/productDetails';
-import {ProductPage} from '../product';
-import {ShopDetail} from '../../shop/shopDetail/shopDetail';
+import {ShopDetails} from '../../shop/shopDetails/shopDetails';
 import {getSelectedProductLists} from '../../../providers/productLists-GetSelectedProductLists-service/productLists-GetSelectedProductLists-service';
 
 @Component({
@@ -22,16 +21,23 @@ export class ProductLists {
     product;
     productOrShop;
     productLists;
+    mySlideOptions = {
+      autoplay: 3500,
+      loop: true,
+      speed: 450
+    };
 
     constructor(private params: NavParams,
     private nav:NavController,
+    private popover: PopoverController,
     private events: Events,
     public productListsService:getSelectedProductLists) {
         this.product = params.data.product;
         this.productOrShop = "product";
-        console.log(params.data);
+        console.log("params.data");
         this.loadSelectedProductLists();
         this.shop = params.data.product;
+        this.popover = popover;
     }
 
     onPageWillEnter() {
@@ -42,42 +48,42 @@ export class ProductLists {
       this.productListsService.load(this.params)
           .then(data => {
             this.productLists = data;
-            console.log(this.productLists);
+            console.log("this.productLists");
           });
     }
 
     presentProductListsPop1Popover(ev) {
-        let productListsPop1 = Popover.create(ProductListsPop1, {
+        let productListsPop1 = this.popover.create(ProductListsPop1, {
             contentEle: this.content.nativeElement,
             textEle: this.text.nativeElement
         });
 
         console.log("presentPopover");
-        this.nav.present(productListsPop1, {
+        productListsPop1.present({
             ev: ev
         });
     }
 
     presentProductListsPop2Popover(ev) {
-        let productListsPop2 = Popover.create(ProductListsPop2, {
+        let productListsPop2 = this.popover.create(ProductListsPop2, {
             contentEle: this.content.nativeElement,
             textEle: this.text.nativeElement
         });
 
         console.log("presentPopover");
-        this.nav.present(productListsPop2, {
+        productListsPop2.present({
             ev: ev
         });
     }
 
     presentProductListsPop3Popover(ev) {
-        let productListsPop3 = Popover.create(ProductListsPop3, {
+        let productListsPop3 = this.popover.create(ProductListsPop3, {
             contentEle: this.content.nativeElement,
             textEle: this.text.nativeElement
         });
 
         console.log("presentPopover");
-        this.nav.present(productListsPop3, {
+        productListsPop3.present({
             ev: ev
         });
     }
@@ -87,9 +93,9 @@ export class ProductLists {
       this.nav.push(ProductDetails,{product:product});
     }
 
-    openShopDetailPage(shop){
-        console.log(shop);
-        this.nav.push(ShopDetail,{shop:shop});
+    openShopDetailsPage(shop){
+        console.log("shop");
+        this.nav.push(ShopDetails,{shop:shop});
 
     }
 }

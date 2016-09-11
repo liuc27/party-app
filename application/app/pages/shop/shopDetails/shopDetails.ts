@@ -2,79 +2,82 @@
  * Created by liuchao on 6/25/16.
  */
 import {Component, ViewChild, ElementRef} from '@angular/core';
-import {Page,App, Events, NavController, NavParams, Popover,} from 'ionic-angular';
-import {shopDetailPop1} from "./popoverPages/shopDetailPop1";
-import {shopDetailPop2} from "./popoverPages/shopDetailPop2";
-import {shopDetailPop3} from "./popoverPages/shopDetailPop3";
-import {getSelectedShopDetail} from '../../../providers/shopDetail-GetSelectedShopDetail-service/shopDetail-GetSelectedShopDetail-service';
+import {Page,App, Events, NavController, NavParams, PopoverController} from 'ionic-angular';
+import {shopDetailsPop1} from "./popoverPages/shopDetailsPop1";
+import {shopDetailsPop2} from "./popoverPages/shopDetailsPop2";
+import {shopDetailsPop3} from "./popoverPages/shopDetailsPop3";
+import {getSelectedShopDetails} from '../../../providers/shopDetails-GetSelectedShopDetails-service/shopDetails-GetSelectedShopDetails-service';
 import {ProductDetails} from '../../product/productLists/productDetails/productDetails';
 
 @Component({
-    templateUrl: 'build/pages/shop/shopDetail/shopDetail.html',
-    providers:[getSelectedShopDetail]
+    templateUrl: 'build/pages/shop/shopDetails/shopDetails.html',
+    providers:[getSelectedShopDetails]
 })
-export class ShopDetail {
+export class ShopDetails {
     @ViewChild('popoverContent', {read: ElementRef}) content: ElementRef;
     @ViewChild('popoverText', {read: ElementRef}) text: ElementRef;
     shop;
     productOrShop;
-    shopDetail;
+    shopDetails;
 
     constructor(private params: NavParams,
     private nav:NavController,
+    private popover: PopoverController,
     private events: Events,
-    public shopDetailService:getSelectedShopDetail) {
+    public shopDetailsService:getSelectedShopDetails) {
         this.shop = params.data.shop;
         this.events = events;
         this.productOrShop = "shop";
         console.log(params.data);
-        this.loadSelectedShopDetail();
+        this.loadSelectedShopDetails();
+        this.popover = popover;
+
     }
 
     onPageWillEnter() {
         this.events.publish('hideTabs');
     }
 
-    loadSelectedShopDetail() {
-      this.shopDetailService.load()
+    loadSelectedShopDetails() {
+      this.shopDetailsService.load()
           .then(data => {
-            this.shopDetail = data;
-            console.log(this.shopDetail);
+            this.shopDetails = data;
+            console.log(this.shopDetails);
           });
     }
 
-    presentShopDetailPop1Popover(ev) {
-        let shopDetailPop1Page = Popover.create(shopDetailPop1, {
+    presentShopDetailsPop1Popover(ev) {
+        let shopDetailsPop1Page = this.popover.create(shopDetailsPop1, {
             contentEle: this.content.nativeElement,
             textEle: this.text.nativeElement
         });
 
         console.log("presentPopover");
-        this.nav.present(shopDetailPop1Page, {
+        shopDetailsPop1Page.present({
             ev: ev
         });
     }
 
-    presentShopDetailPop2Popover(ev) {
-        let shopDetailPop2Page = Popover.create(shopDetailPop2, {
+    presentShopDetailsPop2Popover(ev) {
+        let shopDetailsPop2Page = this.popover.create(shopDetailsPop2, {
             contentEle: this.content.nativeElement,
             textEle: this.text.nativeElement
         });
 
         console.log("presentPopover");
-        this.nav.present(shopDetailPop2Page, {
+        shopDetailsPop2Page.present({
             ev: ev
         });
     }
 
-    presentShopDetailPop3Popover(ev) {
-        let shopDetailPop3Page = Popover.create(shopDetailPop3, {
+    presentShopDetailsPop3Popover(ev) {
+        let shopDetailsPop3Page = this.popover.create(shopDetailsPop3, {
             contentEle: this.content.nativeElement,
             textEle: this.text.nativeElement
         });
 
         console.log("presentPopover");
-        this.nav.present(shopDetailPop3Page, {
+        shopDetailsPop3Page.present({
             ev: ev
         });
     }

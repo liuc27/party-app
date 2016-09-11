@@ -1,22 +1,10 @@
-.shopToolBar{
-  z-index: 1;
-
-  .buttonInMenu{
-    display: table-cell;
-    margin: 0!important;
-    padding: 0!important;
-    width: 33.34vw;
-    text-align:center;
-  }
-}
 
 
 
 .shop {
 
   z-index: 1;
-  background-color: white;
-  
+
   ion-card {
     position: relative;
     text-align: center;

@@ -7,7 +7,7 @@ import {shopPop1} from "./popoverPages/shopPop1";
 import {shopPop2} from "./popoverPages/shopPop2";
 import {shopPop3} from "./popoverPages/shopPop3";
 import {ShopGetAllShopsService} from '../../providers/shop-get-all-shops-service/shop-get-all-shops-service';
-import {ShopDetail} from './shopDetail/shopDetail';
+import {ShopDetails} from './shopDetails/shopDetails';
 
 @Component({
     templateUrl: 'build/pages/shop/shop.html',
@@ -44,9 +44,9 @@ export class ShopPage {
         })
     }
 
-    openshopDetailPage(shop){
+    openshopDetailsPage(shop){
         console.log(shop);
-        this.nav.push(ShopDetail,{shop:shop});
+        this.nav.push(ShopDetails,{shop:shop});
 
     }
     presentShopPop1Popover(ev) {
@@ -56,7 +56,7 @@ export class ShopPage {
         });
 
         console.log("presentPopover");
-        this.nav.present(shopPop1Page, {
+        this.nav.push(shopPop1Page, {
             ev: ev
         });
     }
@@ -68,7 +68,7 @@ export class ShopPage {
         });
 
         console.log("presentPopover");
-        this.nav.present(shopPop2Page, {
+        this.nav.push(shopPop2Page, {
             ev: ev
         });
     }
@@ -80,7 +80,7 @@ export class ShopPage {
         });
 
         console.log("presentPopover");
-        this.nav.present(shopPop3Page, {
+        this.nav.push(shopPop3Page, {
             ev: ev
         });
     }

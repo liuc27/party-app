@@ -1,3 +1,12 @@
+.leftNavButton{
+  width: 14vw;
+  padding-left: 2vw;
+}
+
+.rightNavButton{
+  width: 14vw;
+  padding-right: 2vw;
+}
 
 .action-sheet-group .button-inner{
   margin-left:30vw;
@@ -6,4 +15,25 @@
 
 .action-sheet-title{
   text-align: center;
+}
+
+.listsToolbar{
+  background-color: white;
+
+  z-index: 1;
+
+.toolbar-background{
+  border-top-width:0;
+}
+  .buttonInMenu{
+    display: table-cell;
+    width: 33.33vw;
+    text-align:center;
+    font-size: 1.4em;
+  }
+
+  .button{
+    padding: 0;
+    margin: 0;
+  }
 }

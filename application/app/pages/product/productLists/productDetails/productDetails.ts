@@ -2,42 +2,49 @@
  * Created by liuchao on 6/25/16.
  */
 import {Component, ViewChild, ElementRef} from '@angular/core';
-import {Page,App, ActionSheet, Events, NavController, NavParams, Popover} from 'ionic-angular';
+import {Page,App, ActionSheetController, Events, NavController, NavParams, Popover} from 'ionic-angular';
 import {getSelectedProductDetails} from '../../../../providers/productDetails-GetSelectedProductDetails-service/productDetails-GetSelectedProductDetails-service';
-import {ShopDetail} from '../../../shop/shopDetail/shopDetail';
+import {ShopDetails} from '../../../shop/shopDetails/shopDetails';
+import {SafeResourceUrl, DomSanitizationService} from '@angular/platform-browser';
+import {ProductService} from '../../../../providers/product-getAllProducts-service/product-getAllProducts-service';
+
 
 @Component({
     templateUrl: 'build/pages/product/productLists/productDetails/productDetails.html',
-    providers:[getSelectedProductDetails]
+    providers:[getSelectedProductDetails, ProductService]
 })
 export class ProductDetails {
     @ViewChild('popoverContent', {read: ElementRef}) content: ElementRef;
     @ViewChild('popoverText', {read: ElementRef}) text: ElementRef;
     product;
+    chatRoomId;
+    morphPageId;
     productOrShop;
     productDetails;
-    mySlideOptions = {
-      autoplay: 3500,
-      loop: true,
-      speed: 450
-    };
+    url: SafeResourceUrl;
     constructor(private params: NavParams,
     private nav:NavController,
+    sanitizer: DomSanitizationService,
+    private actionSheet:ActionSheetController,
     private events: Events,
-    public productDetailsService:getSelectedProductDetails) {
+    public productDetailsService:getSelectedProductDetails,
+    public chatRoomService:ProductService,
+    public morphPageService:ProductService,
+    public productService:ProductService) {
         this.product = params.data.product;
         this.productOrShop = "product";
-        console.log(params.data);
+      console.log("params.data");
         this.loadSelectedproductDetails();
+        this.actionSheet = actionSheet;
+        this.url = sanitizer.bypassSecurityTrustResourceUrl('http://youtube.com/embed/U92mEUV1Ka4?rel=0&modestbranding=1&autohide=1&showinfo=0&');
     }
 
     onPageWillEnter() {
         this.events.publish('hideTabs');
     }
 
-
     shareActionSheet() {
-        let actionSheet = ActionSheet.create({
+        let actionSheet = this.actionSheet.create({
             title: 'SHARE',
             cssClass: 'action-sheets-basic-page',
             buttons: [
@@ -87,7 +94,7 @@ export class ProductDetails {
             ]
         });
 
-        this.nav.present(actionSheet);
+        actionSheet.present();
 
     }
 
@@ -95,14 +102,22 @@ export class ProductDetails {
       this.productDetailsService.load()
           .then(data => {
             this.productDetails = data;
-            console.log(this.productDetails);
+            console.log("this.productDetails");
           });
     }
 
-    openShopDetailPage(shop){
-        console.log(shop);
-        this.nav.push(ShopDetail,{shop:shop});
+    openShopDetailsPage(shop){
+        console.log("showShopDetails");
+        console.log("shop");
+        this.nav.push(ShopDetails,{shop:shop});
+    }
+
+    enterChatRoom() {
+        console.log("enterChatRoom");
 
     }
 
+    enterMorphPage() {
+        console.log("enterMorphPage");
+    }
 }

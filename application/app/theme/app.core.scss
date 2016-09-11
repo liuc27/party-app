@@ -18,8 +18,10 @@
 @import "../pages/product/productLists/productLists";
 
 @import "../pages/product/productLists/productDetails/productDetails";
+@import "../pages/product/productLists/productDetails/chatRoom/chatRoom";
+@import "../pages/product/productLists/productDetails/morphPage/morphPage";
 
-@import "../pages/shop/shopDetail/shopDetail";
+@import "../pages/shop/shopDetails/shopDetails";
 
 @import "../pages/product/productLists/popoverPages/productListsPop1";
 @import "../pages/product/productLists/popoverPages/productListsPop2";
@@ -33,6 +35,6 @@
 @import "../pages/shop/popoverPages/shopPop2";
 @import "../pages/shop/popoverPages/shopPop3";
 
-@import "../pages/shop/shopDetail/popoverPages/shopDetailPop1";
-@import "../pages/shop/shopDetail/popoverPages/shopDetailPop2";
-@import "../pages/shop/shopDetail/popoverPages/shopDetailPop3";
+@import "../pages/shop/shopDetails/popoverPages/shopDetailsPop1";
+@import "../pages/shop/shopDetails/popoverPages/shopDetailsPop2";
+@import "../pages/shop/shopDetails/popoverPages/shopDetailsPop3";
