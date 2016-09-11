@@ -11,18 +11,18 @@
 
     <ion-item>
       <ion-label floating>Username</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]="username"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label floating>Password</ion-label>
-      <ion-input type="password"></ion-input>
+      <ion-input type="password" [(ngModel)]="password"></ion-input>
     </ion-item>
 
   </ion-list>
 
   <div class="fullButtonClass">
-    <button primary block>Sign In</button>
+    <button primary block ion-item (click)="localLogin(username,password)">Sign In</button>
   </div>
 
 
