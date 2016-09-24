@@ -1,0 +1,35 @@
+<ion-navbar *navbar>
+  <ion-title>
+    Settings
+  </ion-title>
+</ion-navbar>
+
+    <ion-content class="settings">
+      <ion-list>
+        <ion-item>
+          <ion-label floating>Username</ion-label>
+          <ion-input type="text" [(ngModel)]="username"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Password</ion-label>
+          <ion-input type="password" [(ngModel)]="password"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Email</ion-label>
+          <ion-input type="text" [(ngModel)]="email"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Nickname</ion-label>
+          <ion-input type="text" [(ngModel)]="nickname"></ion-input>
+        </ion-item>
+
+      </ion-list>
+
+      <div class="fullButtonClass">
+        <button primary block ion-item (click)="register(username,password,email,nickname)">OK</button>
+        <button primary block ion-item (click)="backLogin()">Cancel</button>
+      </div>
+    </ion-content>
