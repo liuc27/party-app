@@ -7,6 +7,8 @@ import {SettingsLoginLocal} from '../../providers/settings-login/settings-login-
 import {SettingsLoginOauth} from '../../providers/settings-login/settings-login-oauth';
 import {Http} from '@angular/http';
 import {Register} from './register/register';
+import myGlobals = require('../../globals');
+
 
 @Component({
   templateUrl: 'build/pages/settings/settings.html',
@@ -25,6 +27,7 @@ export class SettingsPage {
               public SettingsLoginOauth:SettingsLoginOauth,
               private http:Http,
               private alertCtrl: AlertController){
+              console.log(myGlobals.token);
   }
 
   onPageWillEnter() {
@@ -32,12 +35,7 @@ export class SettingsPage {
   }
 
   showAlert(message) {
-
-
-
-
-
-  console.log(message);
+  //console.log(message);
     let alert = this.alertCtrl.create({
         title: message,
         buttons: ['OK']
@@ -76,10 +74,7 @@ export class SettingsPage {
   // Login by OAuth
   openOauth(oauthName){
     console.log(oauthName);
-    this.SettingsLoginOauth.load(oauthName)
-      .then(data => {
-        console.log(data);
-        this.showAlert('oauth login success');
-      })
+    window.localStorage.setItem("provider", "google");
+    this.SettingsLoginOauth.load(oauthName);
   }
 }

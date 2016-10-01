@@ -4,9 +4,9 @@
 import {Component, ViewChild, ElementRef} from '@angular/core';
 import {Page, App, Events, NavController, NavParams, Popover, AlertController} from 'ionic-angular';
 //import {SettingsRegister} from '../../../providers/settings-login/settings-register';
-//import {SettingsPage} from '../settings';
+import {SettingsPage} from '../settings';
 import {Http} from '@angular/http';
-
+import myGlobals = require('../../../globals');
 
 @Component({
     templateUrl: 'build/pages/settings/oauth/oauth.html'
@@ -21,18 +21,18 @@ export class Oauth {
   constructor(private nav:NavController,
               private params:NavParams,
               private events: Events,
-              //public SettingsRegister:SettingsRegister,
               private http:Http,
               private alertCtrl: AlertController){
+
+              console.log("aaa");
+              this.provider = window.localStorage.getItem("provider");
+              this.token = myGlobals.token;
+              console.log(this.provider);
+              console.log(this.token);
   }
 
     onPageWillEnter() {
         this.events.publish('showTabs');
-
-        this.provider=window.localStorage.getItem("provider");
-        thid.token=JSON.parse(window.localStorage.getItem("token")).oauth.access_token;;
-        console.log(provider);
-        console.log(provider);
     }
 
     showAlert(message) {
@@ -41,6 +41,11 @@ export class Oauth {
           buttons: ['OK']
         });
         alert.present();
+    }
+
+    showLog(){
+      console.log(this.provider);
+      console.log(myGlobals.token);
     }
 
 }

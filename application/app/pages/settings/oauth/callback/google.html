@@ -17,7 +17,8 @@
                 };
                 window.localStorage.setItem("token", JSON.stringify(token));
                 window.localStorage.setItem("provider", "google");
-                window.location.href = "http://localhost:8101/build/pages/settings/oauth/oauth.html";
+                //window.location.href = "../oauth.html";
+                window.location.replace("../oauth.html");
             } else {
                 alert("Problem authenticating");
             }
