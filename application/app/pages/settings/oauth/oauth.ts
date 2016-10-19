@@ -3,14 +3,14 @@
  */
 import {Component, ViewChild, ElementRef} from '@angular/core';
 import {Page, App, Events, NavController, NavParams, Popover, AlertController} from 'ionic-angular';
-//import {SettingsRegister} from '../../../providers/settings-login/settings-register';
 import {SettingsPage} from '../settings';
 import {Http} from '@angular/http';
 import myGlobals = require('../../../globals');
+import {SettingsUserinfo} from '../../../providers/settings-login/settings-userinfo';
 
 @Component({
-    templateUrl: 'build/pages/settings/oauth/oauth.html'
-    //providers: [SettingsRegister]
+    templateUrl: 'build/pages/settings/oauth/oauth.html',
+    providers: [SettingsUserinfo]
 })
 export class Oauth {
   data: any;
@@ -18,17 +18,28 @@ export class Oauth {
   token: String;
 
 
+
   constructor(private nav:NavController,
               private params:NavParams,
               private events: Events,
               private http:Http,
+              public SettingsUserinfo:SettingsUserinfo,
               private alertCtrl: AlertController){
-
-              console.log("aaa");
               this.provider = window.localStorage.getItem("provider");
               this.token = myGlobals.token;
               console.log(this.provider);
               console.log(this.token);
+              if (this.provider == null || this.token == null) {
+                  this.showAlert('provider or token is null');
+              }else{
+                  this.SettingsUserinfo.load(this.provider,this.token)
+                    .then(data => {
+                      console.log(data);
+                      this.showAlert('login success');
+                    })
+              }
+
+
   }
 
     onPageWillEnter() {
